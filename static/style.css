@@ -1,0 +1,163 @@
+body{
+
+    margin:0;
+
+    background:#eceff4;
+
+    font-family:Arial;
+
+}
+
+.container{
+
+    width:700px;
+
+    margin:40px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+h1{
+
+    text-align:center;
+
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+    margin-bottom:10px;
+
+    box-sizing:border-box;
+
+}
+
+textarea{
+
+    resize:none;
+
+    height:90px;
+
+}
+
+button{
+
+    border:none;
+
+    color:white;
+
+    padding:12px;
+
+    cursor:pointer;
+
+    border-radius:6px;
+
+    font-size:15px;
+
+}
+
+#btnSalvar{
+
+    background:#1976d2;
+
+}
+
+#btnCancelar{
+
+    background:#757575;
+
+}
+
+.botoes{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.botoes button{
+
+    flex:1;
+
+}
+
+.card{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border-left:8px solid;
+
+    background:#f8f8f8;
+
+    border-radius:8px;
+
+}
+
+.vermelho{
+
+    border-color:#d32f2f;
+
+}
+
+.amarelo{
+
+    border-color:#fbc02d;
+
+}
+
+.verde{
+
+    border-color:#388e3c;
+
+}
+
+.status{
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+.acoes{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+.editar{
+
+    flex:1;
+
+    background:#f9a825;
+
+}
+
+.excluir{
+
+    flex:1;
+
+    background:#c62828;
+
+}
