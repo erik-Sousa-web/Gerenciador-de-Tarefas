@@ -6,8 +6,6 @@ def limpar_tela ():
 tarefas = []    
     
     
-    
-    
 def mostrar_menu():
     while True: 
         limpar_tela()
@@ -36,7 +34,6 @@ def cadastrar():
     print("===== Cadastrar Tarefa =====")
     nome = input("Tarefa: ")
     observacao = input("Observação: ")
-    
     while True:
         escolha = input("Status: \n 1 = A Fazer\n 2 = Em Progresso\n 3 = Feito\nStatus da Tarefa? ")
         
@@ -55,6 +52,7 @@ def cadastrar():
             input ()
         return  cadastrar()       
             
+            
 
     tarefa = {
         'Nome':nome,
@@ -65,6 +63,59 @@ def cadastrar():
     tarefas.append(tarefa)
     print(f"✅ Tarefa '{nome}' adicionado com sucesso!")    
     input("Pressione Enter para continuar... ")
+    
+    
+
+
+
+
+def editar():
+    limpar_tela()
+    print("===== Editar Tarefa =====\n")
+
+    if not tarefas:
+        print("⚠️ Nenhuma tarefa cadastrada.")
+        input("Pressione Enter para voltar...")
+        return
+
+    nome = input("Digite o nome da tarefa que deseja editar: ")
+
+    
+    tarefa = None
+    for t in tarefas:
+        if t['Nome'].lower() == nome.lower():
+            tarefa = t
+            break
+
+    if not tarefa:
+        print("⚠️ Tarefa não encontrada.")
+        input("Pressione Enter para voltar...")
+        return
+
+    
+    nova_obs = input(f"Observação atual: {tarefa['Observação']}\nNova observação: ")
+    if nova_obs.strip():
+        tarefa['Observação'] = nova_obs
+
+    
+    print("\nEscolha o novo status:")
+    print("1 = A Fazer")
+    print("2 = Em Progresso")
+    print("3 = Feito")
+
+    escolha = input("Status da Tarefa: ")
+    if escolha == "1":
+        tarefa['Status'] = "A Fazer"
+    elif escolha == "2":
+        tarefa['Status'] = "Em Progresso"
+    elif escolha == "3":
+        tarefa['Status'] = "Feito"
+    else:
+        print("Status inválido, mantendo o anterior.")
+
+    print(f"\n✅ Tarefa '{tarefa['Nome']}' atualizada com sucesso!")
+    input("Pressione Enter para continuar...")
+
 
 
 
