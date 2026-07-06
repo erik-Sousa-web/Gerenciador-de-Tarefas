@@ -6,10 +6,46 @@ def limpar_tela ():
 tarefas = []    
     
     
+    
+    
+def listar_tarefas():
+    print("====== Tarefas Cadastradas ======\n")
+
+    if not tarefas:
+        print("⚠️  Nenhuma tarefa cadastrada.\n")
+    else:
+        for i, tarefa in enumerate(tarefas, start=1):
+            print(f"{i}. {tarefa['Nome']} - {tarefa['Status']}")
+    print("=" * 33 )        
+    
+    
+    
+def escolher_status():
+    while True:
+        print("1 = A Fazer")
+        print("2 = Em Progresso")
+        print("3 = Feito")
+
+        escolha = input("Status da Tarefa: ")
+
+        if escolha == "1":
+            return "A Fazer"
+        elif escolha == "2":
+            return "Em Progresso"
+        elif escolha == "3":
+            return "Feito"
+        else:
+            print("Opção inválida, tente novamente.")
+            input("Pressione Enter...")    
+    
+    
+    
+    
 def mostrar_menu():
     while True: 
-        limpar_tela()
-        print("===== Gerenciamento de Tarefas =====\n")
+        limpar_tela() 
+        listar_tarefas()
+        print("\n===== Gerenciamento de Tarefas =====\n") 
         print("1 = Cadastrar")
         print("2 = Editar")
         print("3 = Excluir")
@@ -31,29 +67,12 @@ def mostrar_menu():
 
 def cadastrar():
     limpar_tela()
-    print("===== Cadastrar Tarefa =====")
+    listar_tarefas()
+    print("===== Cadastrar Tarefa =====") 
     nome = input("Tarefa: ")
     observacao = input("Observação: ")
-    while True:
-        escolha = input("Status: \n 1 = A Fazer\n 2 = Em Progresso\n 3 = Feito\nStatus da Tarefa? ")
+    status = escolher_status()
         
-        
-        if escolha == "1":
-            status = "A Fazer"
-            break
-        elif escolha == "2":
-            status = "Em progresso"
-            break
-        elif escolha == "3":
-            status = "feito"
-            break
-        else:
-            print ("Opção invalida")
-            input ()
-        return  cadastrar()       
-            
-            
-
     tarefa = {
         'Nome':nome,
         'Observação':observacao,
@@ -71,19 +90,13 @@ def cadastrar():
 
 def editar():
     limpar_tela()
+    listar_tarefas()
     print("===== Editar Tarefa =====\n")
-
-    if not tarefas:
-        print("⚠️ Nenhuma tarefa cadastrada.")
-        input("Pressione Enter para voltar...")
-        return
-
     nome = input("Digite o nome da tarefa que deseja editar: ")
 
-    
     tarefa = None
     for t in tarefas:
-        if t['Nome'].lower() == nome.lower():
+        if t["Nome"].lower() == nome.lower():
             tarefa = t
             break
 
@@ -92,29 +105,15 @@ def editar():
         input("Pressione Enter para voltar...")
         return
 
-    
     nova_obs = input(f"Observação atual: {tarefa['Observação']}\nNova observação: ")
     if nova_obs.strip():
         tarefa['Observação'] = nova_obs
 
-    
-    print("\nEscolha o novo status:")
-    print("1 = A Fazer")
-    print("2 = Em Progresso")
-    print("3 = Feito")
-
-    escolha = input("Status da Tarefa: ")
-    if escolha == "1":
-        tarefa['Status'] = "A Fazer"
-    elif escolha == "2":
-        tarefa['Status'] = "Em Progresso"
-    elif escolha == "3":
-        tarefa['Status'] = "Feito"
-    else:
-        print("Status inválido, mantendo o anterior.")
+    tarefa["Status"] = escolher_status()
 
     print(f"\n✅ Tarefa '{tarefa['Nome']}' atualizada com sucesso!")
     input("Pressione Enter para continuar...")
+
 
 
 
