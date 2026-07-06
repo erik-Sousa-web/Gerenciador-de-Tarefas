@@ -28,7 +28,43 @@ def mostrar_menu():
             print ("Opção invalida")
             input ()
         return  mostrar_menu()
+    
+    
 
+def cadastrar():
+    limpar_tela()
+    print("===== Cadastrar Tarefa =====")
+    nome = input("Tarefa: ")
+    observacao = input("Observação: ")
+    
+    while True:
+        escolha = input("Status: \n 1 = A Fazer\n 2 = Em Progresso\n 3 = Feito\nStatus da Tarefa? ")
+        
+        
+        if escolha == "1":
+            status = "A Fazer"
+            break
+        elif escolha == "2":
+            status = "Em progresso"
+            break
+        elif escolha == "3":
+            status = "feito"
+            break
+        else:
+            print ("Opção invalida")
+            input ()
+        return  cadastrar()       
+            
+
+    tarefa = {
+        'Nome':nome,
+        'Observação':observacao,
+        'Status':status
+    }
+
+    tarefas.append(tarefa)
+    print(f"✅ Tarefa '{nome}' adicionado com sucesso!")    
+    input("Pressione Enter para continuar... ")
 
 
 
