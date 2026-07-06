@@ -16,6 +16,7 @@ def listar_tarefas():
     else:
         for i, tarefa in enumerate(tarefas, start=1):
             print(f"{i}. {tarefa['Nome']} - {tarefa['Status']}")
+            print(f"   Observação: {tarefa['Observação']}\n")
     print("=" * 33 )        
     
     
@@ -87,7 +88,6 @@ def cadastrar():
 
 
 
-
 def editar():
     limpar_tela()
     listar_tarefas()
@@ -113,9 +113,28 @@ def editar():
 
     print(f"\n✅ Tarefa '{tarefa['Nome']}' atualizada com sucesso!")
     input("Pressione Enter para continuar...")
+    
+    
+def excluir():
+    limpar_tela()
+    listar_tarefas()
+    
+    print("===== Excluir Tarefa =====\n")
+    nome = input("Digite o nome da tarefa a ser Excluida:  ")
+    encontrado = False
+    for tarefa in tarefas:
+        if tarefa["Nome"].lower() == nome.lower():
+                tarefas.remove(tarefa)
+                print(f"✅ Tarefa '{nome}' excluida com sucesso.")
+                encontrado = True
+                break
+    if not encontrado:
+            print(" ❌ Tarefa não Encontrada.")
+    input("\nPressione Enter para continuar...")
 
 
 
 
 
-mostrar_menu()
+mostrar_menu()  
+
